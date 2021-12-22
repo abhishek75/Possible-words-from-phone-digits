@@ -1,0 +1,17 @@
+class Solution:
+    
+    #Function to find list of all words possible by pressing given numbers.
+    def possibleWords(self,a,N):
+        #Your code here
+        mp = {2:"abc",3:"def",4:"ghi",5:"jkl",6:"mno",7:"pqrs",8:"tuv",9:"wxyz"}
+        def solve(i,cur,result):
+            if i==N:
+                result.append("".join(cur))
+                return
+            for ch in mp[a[i]]:
+                cur.append(ch)
+                solve(i+1,cur,result)
+                cur.pop()
+        result = []
+        solve(0,[],result)
+        return result
